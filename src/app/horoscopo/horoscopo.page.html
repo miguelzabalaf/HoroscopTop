@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon color="primary" name="chevron-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>horoscopo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>{{ horoscopo.nombre }}</h1>
+  <small>{{ horoscopo.fechaSigno }}</small>
+  <p><strong>Amor:</strong>{{ horoscopo.amor }}</p>
+  <p><strong>Salud:</strong>{{ horoscopo.salud }}</p>
+  <p><strong>Dinero:</strong>{{ horoscopo.dinero }}</p>
+</ion-content>

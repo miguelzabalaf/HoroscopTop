@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HoroscopoService } from '../services/horoscopo.service';
-import { Observable } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+import { HoroscopoPage } from '../horoscopo/horoscopo.page';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class HomePage implements OnInit {
   horoscopos: any []= [];
   contentLoaded = false;
 
-  constructor( private horoscopoService: HoroscopoService ) {}
+  constructor( private horoscopoService: HoroscopoService,
+               public modalCtrl: ModalController ) {}
   
   ngOnInit() {
     this.horoscopoService.getHoroscopos().subscribe( (resp: any) => {
@@ -38,7 +40,17 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.ngOnInit();
       event.target.complete();
-    }, 1000);
+    }, 500);
+  }
+
+  async showHoroscopo(horoscopo: any) {
+    const modal = await this.modalCtrl.create({
+      component: HoroscopoPage,
+      componentProps: {
+        horoscopo
+      }
+    })
+    return await modal.present();
   }
 
 }

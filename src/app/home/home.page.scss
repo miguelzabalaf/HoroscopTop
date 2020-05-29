@@ -43,6 +43,11 @@ ion-content {
   }
 }
 
+.cardsContent {
+  display: flex;
+  justify-content: center;
+}
+
 .cards {
   ion-col {
     padding: 9px;

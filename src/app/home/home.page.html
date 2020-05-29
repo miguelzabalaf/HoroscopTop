@@ -20,8 +20,8 @@
           <div *ngIf="contentLoaded" >
             <ion-grid class="cards">
               <ion-row>
-                <ion-col size="4" *ngFor="let horoscopo of horoscopos" >
-                  <div class="card">
+                <ion-col class="cardsContent" size="4" *ngFor="let horoscopo of horoscopos" >
+                  <div class="card" (click)="showHoroscopo(horoscopo)">
                     <div class="cardImg">
                       <ion-img src="/assets/constellations/{{ horoscopo.nombre }}.svg"></ion-img>
                     </div>
@@ -37,7 +37,7 @@
           <div *ngIf="!contentLoaded">
             <ion-grid class="cards">
               <ion-row>
-                <ion-col size="4" *ngFor="let i of [].constructor(12)" >
+                <ion-col  class="cardsContent" size="4" *ngFor="let i of [].constructor(12)" >
                   <div class="cardLoading">
                     <div class="cardImg">
                       <!-- <ion-img></ion-img> -->
