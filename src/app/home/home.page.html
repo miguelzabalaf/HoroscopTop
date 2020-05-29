@@ -6,47 +6,50 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="nameSpace">
-    <ion-img class="nameSpaceImg" src="/assets/name-img.svg"></ion-img>
-    <div class="nameSpaceHello">
-      <h1>Hola </h1><h1 class="nameSpaceHelloName">Miguel Zabala</h1>
-      <h6>Aries</h6>
-    </div>
-  </div>
-
-  <ion-grid class="cards">
-    <ion-row>
-      <ion-col>
-        <div class="card">
-          <div class="cardImg">
-            <ion-img src="/assets/constellations/Aries.svg"></ion-img>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+          <div class="nameSpace">
+            <ion-img class="nameSpaceImg" src="/assets/name-img.svg"></ion-img>
+            <div class="nameSpaceHello">
+              <h1>Hola </h1><h1 class="nameSpaceHelloName">Miguel Zabala</h1>
+              <h6>Aries</h6>
+            </div>
           </div>
-          <div class="cardDetails">
-            <h6>Aries</h6>
+        
+          <div *ngIf="contentLoaded" >
+            <ion-grid class="cards">
+              <ion-row>
+                <ion-col size="4" *ngFor="let horoscopo of horoscopos" >
+                  <div class="card">
+                    <div class="cardImg">
+                      <ion-img src="/assets/constellations/{{ horoscopo.nombre }}.svg"></ion-img>
+                    </div>
+                    <div class="cardDetails">
+                      <h6>{{ horoscopo.nombre }}</h6>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </div>
-        </div>
-      </ion-col>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-    </ion-row>
-    
-    <ion-row>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-      <ion-col><div class="card"></div></ion-col>
-    </ion-row>
-  </ion-grid>
-
+        
+          <div *ngIf="!contentLoaded">
+            <ion-grid class="cards">
+              <ion-row>
+                <ion-col size="4" *ngFor="let i of [].constructor(12)" >
+                  <div class="cardLoading">
+                    <div class="cardImg">
+                      <!-- <ion-img></ion-img> -->
+                    </div>
+                    <div class="cardDetails">
+                      <h6 class="ion-text-center">
+                        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                      </h6>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
 </ion-content>
