@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img class="logo" src="/assets/logo.svg"></ion-img>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon color="primary" slot="icon-only" name="today-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-img class="logo" src="/assets/logo.svg"></ion-img>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon color="primary" slot="icon-only" name="today-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content [fullscreen]="true">
 
@@ -17,7 +17,7 @@
           <div class="nameSpace">
             <ion-img class="nameSpaceImg" src="/assets/name-img.svg"></ion-img>
             <div class="nameSpaceHello">
-              <h1>Hola </h1><h1 class="nameSpaceHelloName">Miguel Zabala</h1>
+              <h1>Hola </h1><h1 class="nameSpaceHelloName">{{ user }}</h1>
               <h6>Aries</h6>
             </div>
           </div>

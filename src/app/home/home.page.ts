@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HoroscopoService } from '../services/horoscopo.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { HoroscopoPage } from '../horoscopo/horoscopo.page';
 
 
@@ -11,26 +11,37 @@ import { HoroscopoPage } from '../horoscopo/horoscopo.page';
 })
 export class HomePage implements OnInit {
 
+  user: string = 'Miguel Zabala'
   horoscopos: any []= [];
   contentLoaded = false;
 
   constructor( private horoscopoService: HoroscopoService,
-               public modalCtrl: ModalController ) {}
-  
+               public modalCtrl: ModalController,
+               public toastCtrl: ToastController ) {}
+
   ngOnInit() {
     this.horoscopoService.getHoroscopos().subscribe( (resp: any) => {
       for( let horoscopo in resp.horoscopo ){
         this.horoscopos.push(resp.horoscopo[horoscopo]);
       }
       if (this.horoscopos.length = 12) {
-        console.log(this.horoscopos);
+        // console.log(this.horoscopos);
         setTimeout(() => {
           this.contentLoaded = true;
         }, 300)
-      } else {
-        //
       }
+    },
+    (error) => {
+      // console.log(error.message)
+      this.presentToast('verifica tu conexión a internet', 3500, 'danger');
     })
+
+    setTimeout(() => {
+      if(this.horoscopos.length === 0) {
+        this.presentToast('Es hora de dormir, el sevidor te mostrará tu horóscopo en unas horas.', 7000, 'warning');
+      }
+    }, 5000)
+
   }
 
 
@@ -53,4 +64,15 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
+
+
+  async presentToast(message: string, duration: number, color: string ) {
+    const toast = await this.toastCtrl.create({
+      message:  `${this.user}, ${message}`,
+      duration: duration,
+      mode: 'ios',
+      color: color
+    });
+    toast.present();
+  }
 }
