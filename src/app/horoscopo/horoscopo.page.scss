@@ -1,0 +1,91 @@
+.container {
+  // border: 3px solid red;
+  background-image: url('../../assets/horoscopo-bg.svg') !important;
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  .space {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  .circles {
+    position: absolute;
+    top: 100px;
+    left: 75px;
+    width: 85px;
+    height: 77px;
+  }
+  .horoscopoNombre {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    h1 {
+      color: #FFF;
+      font-weight: 700;
+      font-size: 35px;
+    }
+  }
+  .horoscopoFecha {
+    position: absolute;
+    top: 73px;
+    left: 30px;
+    small {
+      color: #DDD;
+    }
+  }
+  .containerContent {
+    position: absolute;
+    top: 200px;
+    ion-row {
+      margin-bottom: 15px;
+    }
+    ion-col {
+      padding: 0px !important;
+      display: flex;
+      align-items: center;
+    }
+    .circle {
+      width: 25px;
+    }
+    .title {
+      font-size: 21px;
+      font-weight: 700;
+    }
+    .amor {
+      color: #FF2627;
+    }
+    .salud {
+      color: #0094FF;
+    }
+    .dinero {
+      color: #24C34B;
+    }
+  }
+  .horoscopoFooter {
+    position: absolute;
+    width: 100px;
+    bottom: 0px;
+    right: 50px;
+    transition: all 0.5s;
+  }
+  .close {
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .containerContent {
+    top: 225px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .containerContent {
+    top: 175px;
+  }
+}

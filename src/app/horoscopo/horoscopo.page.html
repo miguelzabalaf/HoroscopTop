@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">
@@ -7,12 +7,37 @@
     </ion-buttons>
     <ion-title>horoscopo</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content class="ion-padding">
-  <h1>{{ horoscopo.nombre }}</h1>
-  <small>{{ horoscopo.fechaSigno }}</small>
-  <p><strong>Amor:</strong>{{ horoscopo.amor }}</p>
-  <p><strong>Salud:</strong>{{ horoscopo.salud }}</p>
-  <p><strong>Dinero:</strong>{{ horoscopo.dinero }}</p>
+<ion-content>
+  <div class="container">
+    <ion-img class="space" src="/assets/space.svg"></ion-img>
+    <div class="horoscopoNombre"><h1>{{ horoscopo.nombre }}</h1></div>
+    <div class="horoscopoFecha"><small>Desde el {{ horoscopo.fechaSigno }}</small></div>
+    <ion-img class="circles" src="/assets/circles.svg"></ion-img>
+    <ion-grid class="ion-padding containerContent">
+      <ion-row>
+        <ion-col size="1"><ion-img class="circle" src="/assets/circle-red.svg"></ion-img></ion-col>
+        <ion-col size="11"><ion-text class="title amor">Amor</ion-text></ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="11"><ion-text>Miguel, {{ horoscopo.amor }}</ion-text></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1"><ion-img class="circle" src="/assets/circle-blue.svg"></ion-img></ion-col>
+        <ion-col size="11"><ion-text class="title salud">Salud</ion-text></ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="11"><ion-text>Miguel, {{ horoscopo.salud }}</ion-text></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1"><ion-img class="circle" src="/assets/circle-green.svg"></ion-img></ion-col>
+        <ion-col size="11"><ion-text class="title dinero">Dinero</ion-text></ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="11"><ion-text>Miguel, {{ horoscopo.dinero }}</ion-text></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-img class="horoscopoFooter" src="/assets/horoscopo-footer.svg"></ion-img>
+    <ion-button class="close" color="light" fill="clear" mode="md" (click)="dismiss()">
+      <ion-icon slot="icon-only" name="close" color="light"></ion-icon>
+    </ion-button>
+  </div>
 </ion-content>
